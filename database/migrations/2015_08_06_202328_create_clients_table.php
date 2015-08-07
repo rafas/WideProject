@@ -20,6 +20,7 @@ class CreateClientsTable extends Migration
             $table->string('phone');
             $table->mediumText('address');
             $table->mediumText('obs');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
