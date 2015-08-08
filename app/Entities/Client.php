@@ -1,6 +1,6 @@
 <?php
 
-namespace WideProject;
+namespace WideProject\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

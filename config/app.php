@@ -138,11 +138,17 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Prettus Repository Service Provider
+         */
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         WideProject\Providers\AppServiceProvider::class,
         WideProject\Providers\EventServiceProvider::class,
         WideProject\Providers\RouteServiceProvider::class,
+        WideProject\Providers\RepositoryProvider::class,
 
     ],
 

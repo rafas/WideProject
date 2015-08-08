@@ -1,6 +1,6 @@
 <?php
 
-namespace WideProject;
+namespace WideProject\Entities;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
