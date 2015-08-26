@@ -2,29 +2,29 @@
 
 namespace WideProject\Http\Controllers;
 
-use WideProject\Repositories\ClientRepository;
 use Illuminate\Http\Request;
-use WideProject\Services\ClientService;
+use WideProject\Repositories\ProjectRepository;
+use WideProject\Services\ProjectService;
 
 
-class ClientController extends Controller
+class ProjectController extends Controller
 {
 
     /**
-     * @var ClientRepository
+     * @var ProjectRepository
      */
     private $repository;
 
     /**
-     * @var ClientService
+     * @var ProjectService
      */
     private $service;
 
     /**
-     * @param ClientRepository $repository
-     * @param ClientService $service
+     * @param ProjectRepository $repository
+     * @param ProjectService $service
      */
-    public function __construct(ClientRepository $repository, ClientService $service)
+    public function __construct(ProjectRepository $repository, ProjectService $service)
     {
         $this->repository = $repository;
         $this->service = $service;
@@ -37,7 +37,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return $this->repository->with(['projects'])->all();
+        return $this->repository->with(['client','owner'])->all();
     }
 
     /**
@@ -69,7 +69,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        return $this->repository->with(['projects'])->find($id);
+        return $this->repository->with(['client','owner'])->find($id);
     }
 
     /**

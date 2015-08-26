@@ -27,5 +27,16 @@ class RepositoryProvider extends ServiceProvider
             \WideProject\Repositories\ClientRepository::class,
             \WideProject\Repositories\ClientRepositoryEloquent::class
         );
+
+        $this->app->bind(
+            \WideProject\Repositories\ProjectRepository::class,
+            \WideProject\Repositories\ProjectRepositoryEloquent::class
+        );
+
+//        $this->app->bind(
+//            \WideProject\Repositories\ProjectNoteRepository::class,
+//            \WideProject\Repositories\ProjectNoteRepositoryEloquent::class
+//        );
+
     }
 }
