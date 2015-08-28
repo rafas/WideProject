@@ -43,11 +43,11 @@ $factory->define(WideProject\Entities\Project::class, function (Faker\Generator 
     ];
 });
 
-//$factory->define(WideProject\Entities\ProjectNote::class, function (Faker\Generator $faker) {
-//    return [
-//        'project_id' => rand(1, 20),
-//        'title' => $faker->word,
-//        'note' => $faker->paragraph,
-//    ];
-//});
+$factory->define(WideProject\Entities\ProjectNote::class, function (Faker\Generator $faker) {
+    return [
+        'project_id' => rand(1, 20),
+        'title' => $faker->word,
+        'note' => $faker->paragraph,
+    ];
+});
 

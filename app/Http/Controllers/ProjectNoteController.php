@@ -3,28 +3,28 @@
 namespace WideProject\Http\Controllers;
 
 use Illuminate\Http\Request;
-use WideProject\Repositories\ProjectRepository;
-use WideProject\Services\ProjectService;
+use WideProject\Repositories\ProjectNoteRepository;
+use WideProject\Services\ProjectNoteService;
 
 
-class ProjectController extends Controller
+class ProjectNoteController extends Controller
 {
 
     /**
-     * @var ProjectRepository
+     * @var ProjectNoteRepository
      */
     private $repository;
 
     /**
-     * @var ProjectService
+     * @var ProjectNoteService
      */
     private $service;
 
     /**
-     * @param ProjectRepository $repository
-     * @param ProjectService $service
+     * @param ProjectNoteRepository $repository
+     * @param ProjectNoteService $service
      */
-    public function __construct(ProjectRepository $repository, ProjectService $service)
+    public function __construct(ProjectNoteRepository $repository, ProjectNoteService $service)
     {
         $this->repository = $repository;
         $this->service = $service;
@@ -35,9 +35,9 @@ class ProjectController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index($id)
     {
-        return $this->repository->with(['client','owner'])->all();
+        return $this->repository->findWhere(['project_id' => $id]);
     }
 
     /**
@@ -53,7 +53,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -64,18 +64,18 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
-    public function show($id)
+    public function show($id, $noteId)
     {
-        return $this->repository->with(['client','owner','notes'])->find($id);
+        return $this->repository->findWhere(['project_id' => $id, 'id' => $noteId]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function edit($id)
@@ -86,23 +86,23 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
-     * @param  int  $id
+     * @param  Request $request
+     * @param  int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $noteId)
     {
-        return $this->service->update($request->all(), $id);
+        return $this->service->update($request->all(), $noteId);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id, $noteId)
     {
-        $this->repository->find($id)->delete();
+        $this->repository->find($noteId)->delete();
     }
 }

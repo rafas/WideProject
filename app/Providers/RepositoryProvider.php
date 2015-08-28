@@ -33,10 +33,10 @@ class RepositoryProvider extends ServiceProvider
             \WideProject\Repositories\ProjectRepositoryEloquent::class
         );
 
-//        $this->app->bind(
-//            \WideProject\Repositories\ProjectNoteRepository::class,
-//            \WideProject\Repositories\ProjectNoteRepositoryEloquent::class
-//        );
+        $this->app->bind(
+            \WideProject\Repositories\ProjectNoteRepository::class,
+            \WideProject\Repositories\ProjectNoteRepositoryEloquent::class
+        );
 
     }
 }
