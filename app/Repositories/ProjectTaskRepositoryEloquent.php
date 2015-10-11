@@ -4,13 +4,13 @@ namespace WideProject\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use WideProject\Entities\Project;
+use WideProject\Entities\ProjectTask;
 
 /**
- * Class ProjectRepositoryEloquent
+ * Class ProjectTaskRepositoryEloquent
  * @package namespace WideProject\Repositories;
  */
-class ProjectRepositoryEloquent extends BaseRepository implements ProjectRepository
+class ProjectTaskRepositoryEloquent extends BaseRepository implements ProjectTaskRepository
 {
     /**
      * Specify Model class name
@@ -19,7 +19,7 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
      */
     public function model()
     {
-        return Project::class;
+        return ProjectTask::class;
     }
 
     /**
@@ -28,15 +28,5 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
     public function boot()
     {
         $this->pushCriteria( app(RequestCriteria::class) );
-    }
-
-    /**
-     * @param $id
-     * @param $userId
-     * @return mixed
-     */
-    public function isOwner($id, $userId)
-    {
-        return $this->findWhere(['id'=>$id, 'owner_id'=>$userId])->count() ? true : false;
     }
 }

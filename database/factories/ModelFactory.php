@@ -51,3 +51,12 @@ $factory->define(WideProject\Entities\ProjectNote::class, function (Faker\Genera
     ];
 });
 
+$factory->define(WideProject\Entities\ProjectTask::class, function (Faker\Generator $faker) {
+    return [
+        'project_id' => rand(1, 20),
+        'name' => $faker->sentence,
+        'start_date' => $faker->dateTime,
+        'due_date' => $faker->dateTime,
+        'status' => rand(1, 3),
+    ];
+});

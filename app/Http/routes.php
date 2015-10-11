@@ -27,8 +27,21 @@ Route::get('/project/{id}', 'ProjectController@show');
 Route::put('/project/{id}', 'ProjectController@update');
 Route::delete('/project/{id}', 'ProjectController@destroy');
 
+Route::get('/project/{id}/members', 'ProjectController@getMembers');
+Route::post('/project/{id}/member/{memberId}', 'ProjectController@addMember');
+Route::delete('/project/{id}/member/{memberId}', 'ProjectController@removeMember');
+
+Route::get('/project/{id}/member/{memberId}', 'ProjectController@isMember'); // PARA TESTAR SEM OAUTH
+Route::get('/project/{id}/owner/{ownerId}', 'ProjectController@isOwner'); // PARA TESTAR SEM OAUTH
+
 Route::get('/project/{id}/note', 'ProjectNoteController@index');
 Route::post('/project/{id}/note', 'ProjectNoteController@store');
 Route::get('/project/{id}/note/{noteId}', 'ProjectNoteController@show');
 Route::put('/project/{id}/note/{noteId}', 'ProjectNoteController@update');
 Route::delete('/project/{id}/note/{noteId}', 'ProjectNoteController@destroy');
+
+Route::get('/project/{id}/task', 'ProjectTaskController@index');
+Route::post('/project/{id}/task', 'ProjectTaskController@store');
+Route::get('/project/{id}/task/{taskId}', 'ProjectTaskController@show');
+Route::put('/project/{id}/task/{taskId}', 'ProjectTaskController@update');
+Route::delete('/project/{id}/task/{taskId}', 'ProjectTaskController@destroy');
